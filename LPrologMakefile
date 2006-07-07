@@ -1,0 +1,83 @@
+###########################################################################
+#                             Teyjus-Makefile
+#                    Copyright (C) 2000  Markus Mottl
+#             Free to copy and modify! USE AT YOUR OWN RISK!
+#
+###########################################################################
+
+
+# Set these variables to the names of the sources to be processed and
+# the result variable.
+
+export MODULES
+export QUERY
+export MAIN
+export RESULT
+
+
+# Eventually set include path
+export PATHS
+
+# Add a list of optional trash files that should be deleted by "make clean"
+export TRASH
+
+####################  variables depending on your Teyjus-installation
+
+ifndef TJCC
+  TJCC = tjcc
+endif
+
+export TJCC
+
+ifndef TJSIM
+  TJSIM = tjsim
+endif
+
+export TJSIM
+
+ifndef SHELL
+  SHELL = /bin/sh
+endif
+
+export SHELL
+
+###########################################################################
+
+####################  change following sections only if
+####################    you know what you are doing!
+
+INTF      = $(SOURCES:%=%.sig)
+IMPL      = $(SOURCES:%=%.mod)
+OBJ       = $(SOURCES:%=%.lp)
+TJCCFLAGS = $(PATHS:%=-p %)
+
+TARGETS = $(OBJ) $(RESULT)
+
+###########################################################################
+# USER RULES
+
+all:	$(RESULT)
+
+###########################################################################
+# LOW LEVEL RULES
+
+$(RESULT):	$(OBJ)
+	@printf "Making result *$(RESULT)* calling *$(MAIN).$(QUERY)*\n"
+	@printf "#!$(SHELL)\n$(TJSIM) -b $(PATHS) -s \"$(QUERY)\" $(MAIN)\n" >$@
+	@chmod 755 $@
+
+.SUFFIXES:	.lp
+%.lp:	%.sig %.mod
+	$(TJCC) $(TJCCFLAGS) -o $@ $<
+	@echo
+
+###########################################################################
+# MAINTAINANCE RULES
+
+.PHONY:	clean
+clean:
+	rm -f $(TARGETS) $(TRASH)
+
+.PHONY: nobackup
+nobackup:
+	rm -f *.bak *~ *.dup
