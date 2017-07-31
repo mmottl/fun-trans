@@ -1,7 +1,0 @@
-{
-  "name": "Fun-trans",
-  "tagline": "A framework for automated transformation of functional programs (e.g. partial evaluation, common subexpression elimination, etc.) written in LambdaProlog.",
-  "body": "Fun-trans - A Framework for Transforming Functional Programs\r\n============================================================\r\n\r\nThis source code implements the program transformation\r\nframework for a strict and pure functional language\r\ndescribed in the master's thesis [Automating Functional Program\r\nTransformation](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.10.3479).\r\nThe implementation language is\r\n[LambdaProlog](http://www.lix.polytechnique.fr/~dale/lProlog).\r\n\r\nEnjoy!\r\n\r\nMarkus Mottl in Rutherford, NJ on June 29, 2012\r\n",
-  "google": "",
-  "note": "Don't delete this file! It's used internally to help with page regeneration."
-}

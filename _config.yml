@@ -1,0 +1,8 @@
+title: Fun-trans
+description: A framework for automated transformation of functional programs (e.g. partial evaluation, common subexpression elimination, etc.) written in LambdaProlog.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
