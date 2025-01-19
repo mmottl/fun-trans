@@ -1,5 +1,5 @@
-# To do
+# TODO
 
-- solve problem with recursive types
-- common sub-computation elimination for typed terms
-- improve simplifier `tp_tlet` + its inlining
+- [ ] Solve problem with recursive types
+- [ ] Common sub-computation elimination for typed terms
+- [ ] Improve simplifier `tp_tlet` + its inlining
